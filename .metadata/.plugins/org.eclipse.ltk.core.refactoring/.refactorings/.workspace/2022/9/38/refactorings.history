@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;nucleo_i2c&apos; to &apos;UART_RX_NUCLEO&apos;" description="Rename resource &apos;nucleo_i2c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/nucleo_i2c" name="UART_RX_NUCLEO" stamp="1663094658960" updateReferences="true"/>
+</session>

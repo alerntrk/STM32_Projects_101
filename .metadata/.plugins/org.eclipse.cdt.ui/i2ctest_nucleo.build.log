@@ -1,0 +1,40 @@
+20:43:20 **** Incremental Build of configuration Debug for project i2ctest_nucleo ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:64: warning: "store" redefined
+   64 | #define store (SRAM_BASE+10)
+      | 
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:31: note: this is the location of the previous definition
+   31 | #define store (SRAM_BASE+100)
+      | 
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:64:15: warning: passing argument 2 of 'HAL_UART_Receive_DMA' makes pointer from integer without a cast [-Wint-conversion]
+   64 | #define store (SRAM_BASE+10)
+      |               ^~~~~~~~~~~~~~
+      |               |
+      |               long unsigned int
+../Core/Src/main.c:99:33: note: in expansion of macro 'store'
+   99 |   HAL_UART_Receive_DMA(&huart2, store,8);
+      |                                 ^~~~~
+In file included from ../Core/Inc/stm32l0xx_hal_conf.h:281,
+                 from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h:1493:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'long unsigned int'
+ 1493 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                   ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "i2ctest_nucleo.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\win10\STM32CubeIDE\workspace_1.10.1\i2ctest_nucleo\STM32L053R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="i2ctest_nucleo.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: i2ctest_nucleo.elf
+ 
+arm-none-eabi-size   i2ctest_nucleo.elf 
+arm-none-eabi-objdump -h -S  i2ctest_nucleo.elf  > "i2ctest_nucleo.list"
+   text	   data	    bss	    dec	    hex	filename
+  13380	     20	   1924	  15324	   3bdc	i2ctest_nucleo.elf
+Finished building: default.size.stdout
+ 
+Finished building: i2ctest_nucleo.list
+ 
+
+20:43:22 Build Finished. 0 errors, 2 warnings. (took 1s.635ms)
+
